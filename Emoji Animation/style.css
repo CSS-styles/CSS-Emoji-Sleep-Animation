@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #181a1b;
+}
+.face {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  background-color: rgb(255, 204, 0);
+  border-radius: 50%;
+}
+.eye1,
+.eye2 {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  top: 25%;
+  border-radius: 50%;
+}
+.eye1 {
+  left: 20%;
+}
+.eye2 {
+  right: 20%;
+}
+.eye1::before,
+.eye2::before {
+  content: "";
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: rgb(255, 204, 0);
+  border-bottom: 5px solid black;
+  border-radius: 50%;
+  transition: 1s;
+}
+.mouth {
+  position: absolute;
+  height: 50px;
+  width: 60px;
+  background-color: black;
+  bottom: 20%;
+  left: 40%;
+  border-radius: 50%;
+  animation: anime 3s linear infinite;
+}
+@keyframes anime {
+  50% {
+    transform: scale(0.75);
+  }
+}
+.text span {
+  position: relative;
+  color: white;
+  font-size: 30px;
+  font-family: sans-serif;
+  display: block;
+  text-align: center;
+  top: 50px;
+  transition: 0.5s;
+}
+.text span:nth-child(2) {
+  top: 0;
+  transform: scale(0);
+}
+.face:hover .eye1::before {
+  transform: translateY(-30px);
+  border-radius: 0;
+}
+.face:hover ~ .text span:nth-child(2) {
+  transform: scale(1);
+}
+.face:hover ~ .text span:nth-child(1) {
+  transform: scale(0);
+}
